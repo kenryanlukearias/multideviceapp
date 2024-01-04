@@ -14,11 +14,14 @@ $color1: #FF0000;
 @mixin tablet-layout {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 @mixin mobile-layout {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 body {
@@ -46,11 +49,6 @@ body {
         @include mobile-layout;
     }
 
-    @include resolutions(0px, 480px) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 }
 
 p {
