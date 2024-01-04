@@ -1,27 +1,30 @@
 $color1: #FF0000;
 
+// Mixin for defining media queries based on min-width and max-width
 @mixin resolutions($minwidth, $maxwidth) {
     @media screen and (min-width: $minwidth) and (max-width:$maxwidth){
         @content
     }
 }
 
+// Mixin for desktop layout
 @mixin desktop-layout {
     display: flex;
     justify-content: center;
 }
 
+// Mixin for tablet layout
 @mixin tablet-layout {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+// Mixin for mobile layout
 @mixin mobile-layout {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 body {
@@ -41,19 +44,21 @@ body {
     background-color: $color1;
     width: 100%;
 
+    // Apply tablet layout for screens with max-width of 1025px
     @media (max-width: 1025px) {
         @include tablet-layout;
     }
 
+    // Apply mobile layout for screens with max-width of 480px
     @media (max-width: 480px) {
         @include mobile-layout;
     }
-
 }
 
 p {
     font-size: 120%;
 
+    // Apply small font size for screens with min-width of 0px and max-width of 480px
     @include resolutions(0px, 480px) {
         font-size: small;
     }
@@ -73,6 +78,7 @@ ul {
     list-style: none; // Remove the dots on the list
     display: flex; // Make the list horizontal
 
+    // Apply flex-wrap and justify-content center for screens with max-width of 480px
     @media (max-width: 480px) {
         flex-wrap: wrap;
         justify-content: center;
@@ -84,6 +90,7 @@ li {
     margin: 0 30px; // Add some spacing between the list items
     font-weight: 800;
 
+    // Adjust margin for screens with max-width of 480px
     @media (max-width: 480px) {
         margin: 10px;
     }
@@ -110,14 +117,18 @@ li {
     height: 300px;
     opacity: 0.8;
 }
+
 .image {
     width: 450px;
     height: 450px;
+
+    // Adjust width and height for screens with min-width of 0px and max-width of 1024px
     @include resolutions(0px, 1024px) {
         width: 100%;
         height: 100%;
     }
 }
+
 .p_curry {
     margin: 10px;
 }
@@ -126,9 +137,9 @@ li {
     display: flex;
     justify-content: center; // Center the items horizontally
     align-items: center; // Center the items vertically
+
+    // Apply flex-wrap for screens with min-width of 0px and max-width of 1024px
     @include resolutions(0px, 1024px) {
         flex-wrap: wrap;
     }
-
-
 }
