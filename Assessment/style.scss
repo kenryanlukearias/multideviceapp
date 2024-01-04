@@ -1,0 +1,125 @@
+$color1: #FF0000;
+
+@mixin resolutions($minwidth, $maxwidth) {
+    @media screen and (min-width: $minwidth) and (max-width:$maxwidth){
+        @content
+    }
+}
+
+@mixin desktop-layout {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin tablet-layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@mixin mobile-layout {
+    display: block;
+}
+
+body {
+    font-family: 'Dosis', sans-serif;
+    margin: 0;
+    border: 0;
+}
+
+.body {
+    width: 70%;
+    margin: auto;
+}
+
+.navigation {
+    @include desktop-layout;
+    text-decoration: none;
+    background-color: $color1;
+    width: 100%;
+
+    @media (max-width: 1025px) {
+        @include tablet-layout;
+    }
+
+    @media (max-width: 480px) {
+        @include mobile-layout;
+    }
+}
+
+p {
+    font-size: 120%;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    margin: 0 30px;
+}
+
+ul {
+    list-style: none; // Remove the dots on the list
+    display: flex; // Make the list horizontal
+
+    @media (max-width: 480px) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+li {
+    display: inline-block; // Display list items inline
+    margin: 0 30px; // Add some spacing between the list items
+    font-weight: 800;
+
+    @media (max-width: 480px) {
+        margin: 10px;
+    }
+}
+
+.jpcuisine {
+    margin: 0 auto;
+}
+
+.about {
+    @extend .jpcuisine;
+}
+
+.p_cuisine {
+    margin: auto;
+}
+
+.p_about {
+    @extend .p_cuisine;
+}
+
+.space {
+    background-image: url(japanfood.jpg);
+    height: 300px;
+    opacity: 0.8;
+}
+.image {
+    width: 450px;
+    height: 450px;
+    @include resolutions(0px, 1024px) {
+        width: 100%;
+    }
+}
+.p_curry {
+    margin: 10px;
+}
+
+.sameline {
+    display: flex;
+    justify-content: center; // Center the items horizontally
+    align-items: center; // Center the items vertically
+    @include resolutions(0px, 1024px) {
+        flex-wrap: wrap;
+    }
+
+
+}
